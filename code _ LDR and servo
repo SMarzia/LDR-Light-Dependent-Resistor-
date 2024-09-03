@@ -1,0 +1,27 @@
+#include<Servo.h>
+const int ldrpin = A0;
+int ldrvalue= 0;
+Servo pwm;
+
+void setup() {
+//pinMode(ldrpin, INPUT);
+pwm.attach(9);  
+Serial.begin(9600);
+}
+
+void loop() {
+ldrvalue = analogRead(ldrpin);
+Serial.println("Show ldrvalue=");
+Serial.println(ldrvalue);
+delay(500);
+if(ldrvalue>=20)
+{
+  pwm.write(180);               
+  delay(200); 
+}
+else
+{
+  pwm.write(0);               
+  delay(200); 
+}
+}
